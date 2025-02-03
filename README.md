@@ -74,13 +74,14 @@ Less common cases are above 600.
 - Create `transaction_hour` and `transaction_day`, `transaction_month`
 - Add a distance in kilometres column `distance_cust_to_merch(km)`
 - Drop columns that are not needed in the modelling.
-  - `_c0`
-  - `cc_num`
-  - `trans_num`
-  - `unix_time`
-  - `first_name`
-  - `last_name`
-  - `street`
+  - `_c0` - Unnecessary for modeling
+  - `cc_num` - Not relevant for fraud detection
+  - `trans_num` - Not relevant for fraud detection
+  - `unix_time` - This column is redundant
+  - `first_name` - Redundant (transaction timestamp already exists)
+  - `last_name` - Not relevant for fraud detection
+  - `street` - Redundant (city and state provide location context)
+  
 ### 3. Data Encoding and Scaling
 ##### Correlation
 - The data was encoded, and the correlation between each feature and the is_fraud column was calculated. The **VectorAssembler** was used to combine the features into a single vector column `new_features` before calculating the correlations using the **stat.corr** function, which handles cases where a features column might already exist.
@@ -111,7 +112,7 @@ A Random Forest model was trained to classify fraudulent transactions using mult
     - **False Positives (FP):** 25,231 — Non-fraud cases incorrectly predicted as fraud
     - **True Negatives (TN):** 528,343 — Correct non-fraud predictions
     - **False Negatives (FN):** 618 — Fraud cases missed by the model
-    - **Recall:** 68.8% -  The model detects fraud cases moderately.
+    - **Recall:** 68.8% -  The model detects fraud cases moderately, but at the cost of false positives which can be reduced by improving the classifier
     - **Precision:** 5.6% - This indicates that a significant number of non-fraud cases are falsely flagged as fraud.
 
 ---
@@ -119,7 +120,6 @@ A Random Forest model was trained to classify fraudulent transactions using mult
 ## Conclusion
 The Random Forest classifier demonstrated moderate recall (68.8%), successfully identifying most fraudulent transactions. However, precision was low (5.6%), indicating a significant number of false fraud flags. This trade-off suggests that while the model is good at catching fraudulent cases along with legitimate ones, it requires further tuning to minimize disruptions from false alerts.
 
----
 
 ## Recommendation
 Given the high cost of false positives in financial operations, adjusting the decision threshold or implementing cost-sensitive evaluation strategies would be essential to balance the model's performance. For production-level deployment, closer collaboration with domain experts and further refinement of feature engineering techniques are recommended to improve precision.
