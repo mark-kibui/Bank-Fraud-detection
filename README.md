@@ -42,16 +42,16 @@ This dataset is split into two parts: a training set **fraud_train** and a testi
  ![Fraud_Non-fraud](Assets/Fraud_Non-fraud.png)
 - Fraud cases are 7506 in number, making that 0.5% iof the total transaction. The data is extremely imbalanced
  
- ![Transaction Amounts for Fraud Cases](Assets/Transaction Amounts for Fraud Cases.png)
+ ![Transaction_Amounts_for_Fraud_Cases](Assets/Transaction_Amounts_for_Fraud_Cases.png)
 - Alot of fraud cases are between 0-400. This could be to avoid detection making small purchases.
 Less common cases are above 600.
  
- ![Fraud Transaction Volume by Hour](Assets/Fraud Transaction Volume by Hour.png)
+ ![Fraud_Transaction_Volume_by_Hour](Assets/Fraud_Transaction_Volume_by_Hour.png)
 - Fraud cases seem to happen throughout the day, but more in the evening to right after midnight
  
- ![Age distribution for fruadulent transactions](Assets/Age distribution for fruadulent transactions.png)
+ ![Age_distribution_for_fruadulent_transactions](Assets/Age_distribution_for_fruadulent_transactions.png)
  
- ![Age distribution for non-fruadulent transactions](Assets/Age distribution for non-fruadulent transactions.png)
+ ![Age_distribution_for_non-fruadulent_transactions](Assets/Age_distribution_for_non-fruadulent_transactions.png)
  
 - Non-fraud cases
      - Most transactions are between 30 and 60 years throught to 80 years. Majority are working class and retirees
