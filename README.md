@@ -3,9 +3,14 @@
 ## Project Overview  
 This project focuses on detecting fraudulent bank transactions using PySpark. Given the large and imbalanced dataset, distributed data processing is leveraged to efficiently identify potentially fraudulent transactions.  
 
----
 
-## Data Understanding  
+## Data Understanding 
+
+**About the Datasets**
+- These datasets are from [Kaggle](https://www.kaggle.com/datasets/kartik2112/fraud-detection). They contain simulated credit card transaction dataset containing legitimate and fraud transactions from the duration 1st Jan 2019 - 31st Dec 2020. It covers credit cards of almost 1000 customers doing transactions with a pool of about 800 merchants.
+
+**Source of Simulation**
+- This was generated using Sparkov Data Generation | Github tool created by Brandon Harris. This simulation was run for the duration - 1 Jan 2019 to 31 Dec 2020. The files were combined and converted into a standard format.
  
 This dataset is split into two parts: a training set **fraud_train** and a testing set **fraud_test**. The training set contains 1,296,675 rows of transaction data, while the testing set contains 555,719 rows. Both datasets share the same schema as shown below.
 
@@ -59,7 +64,7 @@ Less common cases are above 600.
 - Fraud cases
      - Alot of these are between 30 and 60 to 90 year olds. These are of course the target victims.
 
----
+
 
 ## Data Preprocessing  
 ### 1. Data Cleaning  
@@ -103,7 +108,6 @@ Less common cases are above 600.
     - Fraud Weight: 86.37
     - Non-Fraud Weight: 0.50
 
----
 
 ## Modeling  
 ### Random Forest Classifier  
@@ -115,7 +119,6 @@ A Random Forest model was trained to classify fraudulent transactions using mult
     - **Recall:** 68.8% -  The model detects fraud cases moderately, but at the cost of false positives which can be reduced by improving the classifier
     - **Precision:** 5.6% - This indicates that a significant number of non-fraud cases are falsely flagged as fraud.
 
----
 
 ## Conclusion
 The Random Forest classifier demonstrated moderate recall (68.8%), successfully identifying most fraudulent transactions. However, precision was low (5.6%), indicating a significant number of false fraud flags. This trade-off suggests that while the model is good at catching fraudulent cases along with legitimate ones, it requires further tuning to minimize disruptions from false alerts.
@@ -123,4 +126,3 @@ The Random Forest classifier demonstrated moderate recall (68.8%), successfully 
 
 ## Recommendation
 Given the high cost of false positives in financial operations, adjusting the decision threshold or implementing cost-sensitive evaluation strategies would be essential to balance the model's performance. For production-level deployment, closer collaboration with domain experts and further refinement of feature engineering techniques are recommended to improve precision.
-
